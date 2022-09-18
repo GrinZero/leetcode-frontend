@@ -15,6 +15,8 @@ const Main = () => {
     queue: [],
   });
 
+  const [outPushList, setOutPushList] = useState<number[]>([]);
+
   const handleAppendTail = () => {
     if (stack.right.length >= 10) {
       MessagePlugin.warning('别点了别点了，最多就10个');
@@ -42,9 +44,15 @@ const Main = () => {
 
   useEffect(() => {
     if (outValue !== null) {
+      const clearDecor = (index: number, action: () => void) => {
+        timeIDList.current[index][1] = null;
+        action();
+      };
+
       const action = () => {
         setStack(({ left, queue, right }) => {
-          left.pop();
+          const out = left.pop();
+          setOutPushList([...outPushList, out ?? -1]);
           queue.shift();
           return {
             left,
@@ -54,8 +62,21 @@ const Main = () => {
         });
       };
 
-      timeIDList.current.push([setTimeout(action, 500), null]);
-      timeIDList.current.push([setTimeout(() => setOutValue(null), 800), null]);
+      timeIDList.current.push([
+        setTimeout(
+          clearDecor.bind(this, timeIDList.current.length, action),
+          500,
+        ),
+        action,
+      ]);
+      const clearOutValue = () => setOutValue(null);
+      timeIDList.current.push([
+        setTimeout(
+          clearDecor.bind(this, timeIDList.current.length, clearOutValue),
+          800,
+        ),
+        clearOutValue,
+      ]);
     }
   }, [outValue]);
 
@@ -111,7 +132,7 @@ const Main = () => {
     if (len) {
       shiftAction();
     } else {
-      timeIDList.current.push([setTimeout(shiftAction, 800), shiftAction]);
+      timeIDList.current.push([setTimeout(shiftAction, 500), shiftAction]);
     }
   };
 
@@ -129,6 +150,7 @@ const Main = () => {
     clearInterval(intervalID.current);
     intervalID.current = undefined;
     setOutValue(null);
+    setOutPushList([]);
   };
 
   return (
@@ -168,6 +190,17 @@ const Main = () => {
             } mr-2 animate__animated animate__fadeInRight ${
               index === 0 ? styles.active : ''
             } ${outValue === item ? 'animate__fadeOutLeft' : ''}`}
+            key={item}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+      <div className={`${styles.queue} ${styles.output} mt-3`}>
+        <strong className={`text-black px-4`}>输出</strong>
+        {outPushList.map((item, index) => (
+          <div
+            className={`${styles.item} mr-2 animate__animated animate__fadeInRight`}
             key={item}
           >
             {item}

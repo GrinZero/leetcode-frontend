@@ -17,12 +17,14 @@ group:
 
 ### 图解
 
+利用栈先进后出的特点，用栈 I 来接收栈 II 的数据，然后再将栈 I 的数据出栈，就实现了队列的先进先出。
+
 ```tsx
 /**
  * inline: true
  */
 import React from 'react';
-import Page from './achieve-queue-using-two-stacks';
+import Page from './yong-liang-ge-zhan-shi-xian-dui-lie-lcof';
 
 const Main: React.FC<void> = () => {
   return <Page />;
@@ -53,3 +55,15 @@ function CQueue() {
   Object.assign(this, { appendTail, deleteHead });
 }
 ```
+
+## 剑指 Offer 30. 包含 min 函数的栈
+
+### 题目描述
+
+定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的 min 函数在该栈中，调用 min、push 及 pop 的时间复杂度都是 O(1)。
+
+> 来源：力扣（LeetCode）
+> 链接：https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof
+
+### 图解
+
