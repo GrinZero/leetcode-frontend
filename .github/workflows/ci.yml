@@ -1,4 +1,4 @@
-name: CI
+name: Deploy to GitHub Pages
 on:
   push:
     branches:
@@ -21,13 +21,9 @@ jobs:
           yarn
           yarn build
 
-      - name: List files
-        run: ls -la
-        working-directory: ${{ github.workspace }}/dist
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ${{ github.workspace }}
+          publish_dir: ${{ github.workspace }}/dist
