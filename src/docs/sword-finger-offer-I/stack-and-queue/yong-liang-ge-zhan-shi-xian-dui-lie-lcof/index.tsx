@@ -197,7 +197,7 @@ const Main = () => {
         ))}
       </div>
       <div className={`${styles.queue} ${styles.output} mt-3`}>
-        <strong className={`text-black px-4`}>输出</strong>
+        <strong className={`px-4`}>输出</strong>
         {outPushList.map((item, index) => (
           <div
             className={`${styles.item} mr-2 animate__animated animate__fadeInRight`}

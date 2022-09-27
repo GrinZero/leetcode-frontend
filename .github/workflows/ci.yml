@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install and Build
+        run: |
+          npm install -g yarn
+          yarn
+          yarn build
+
+      - name: List files
+        run: ls -la
+        working-directory: ${{ github.workspace }}/dist
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ${{ github.workspace }}

@@ -1,8 +1,5 @@
-@import 'animate.css';
+@import 'magic-design-react/dist/magic-design-react.css';
 @import 'tdesign-react/es/style/index.css';
-@tailwind utilities;
-
-
 body {
   --theme-red: #f77f7f;
   --theme-orange: #f7ab7f;
@@ -27,3 +24,10 @@ body {
   --theme-bg-color: rgba(16, 18, 27, 0.4);
   --theme-color: #f9fafb;
 }
+
+body{
+  color: var(--theme-color);
+}
+
+
+@tailwind utilities;

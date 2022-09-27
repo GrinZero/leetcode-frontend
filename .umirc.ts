@@ -3,7 +3,7 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'Site Name',
   mode: 'site',
-  mfsu: {},
+  // mfsu: {},
   locales: [
     ['zh-CN', '中文'],
     ['en-US', 'English'],

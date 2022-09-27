@@ -14,7 +14,7 @@ function MinStack() {
     minStack.push(Math.min(minStack[minStack.length - 1], value));
   };
   const pop = () => {
-    minStack.pop();
+    minStack.length > 1 && minStack.pop();
     return stack.pop();
   };
   const top = () => {

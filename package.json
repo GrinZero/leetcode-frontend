@@ -1,8 +1,10 @@
 {
   "private": true,
-  "name": "dumi-app",
+  "name": "leetcode-frontend",
+  "version": "1.0.0",
+  "description": "图解leetcode算法题，用前端的姿势打开leetcode",
   "scripts": {
-    "start": "TAILWIND_MODE=watch dumi dev",
+    "dev": "TAILWIND_MODE=watch dumi dev",
     "build": "dumi build",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
@@ -29,6 +31,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "magic-design-react": "^0.0.30",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tdesign-react": "^0.41.1"
   }

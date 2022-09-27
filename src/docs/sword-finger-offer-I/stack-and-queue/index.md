@@ -67,3 +67,39 @@ function CQueue() {
 
 ### 图解
 
+```tsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import Page from './bao-han-minhan-shu-de-zhan-lcof';
+
+const Main: React.FC<void> = () => {
+  return <Page />;
+};
+export default Main;
+```
+
+### 题解
+```js
+function MinStack() {
+  const minStack = [Infinity];
+  const stack = [];
+
+  const push = (value) => {
+    stack.push(value);
+    minStack.push(Math.min(minStack[minStack.length - 1], value));
+  };
+  const pop = () => {
+    minStack.length > 1 && minStack.pop();
+    return stack.pop();
+  };
+  const top = () => {
+    return stack[stack.length - 1];
+  };
+  const min = () => {
+    return minStack[minStack.length - 1];
+  };
+  Object.assign(this, { push, pop, top, min });
+}
+```
