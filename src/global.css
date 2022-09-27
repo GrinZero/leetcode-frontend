@@ -1,0 +1,33 @@
+@import 'magic-design-react/dist/magic-design-react.css';
+@import 'tdesign-react/es/style/index.css';
+body {
+  --theme-red: #f77f7f;
+  --theme-orange: #f7ab7f;
+  --theme-yellow: #f7eb7f;
+  --theme-green: #7ff799;
+  --theme-cyan: #7ff7f7;
+  --theme-blue: #7fa1f7;
+  --theme-purge: #8c87ff;
+}
+
+
+body {
+  --border-color: rgba(222, 222, 222, 0.35);
+  --hover-border-color: rgba(198, 198, 198, 0.85);
+  --theme-bg-color: rgba(255, 255, 255, 0.31);
+  --theme-color: #3c3a3a;
+}
+
+[data-prefers-color='dark'] body {
+  --border-color: rgba(113, 119, 144, 0.25);
+  --hover-border-color: rgba(88, 93, 114, 0.75);
+  --theme-bg-color: rgba(16, 18, 27, 0.4);
+  --theme-color: #f9fafb;
+}
+
+body{
+  color: var(--theme-color);
+}
+
+
+@tailwind utilities;
