@@ -3,6 +3,8 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'Site Name',
   mode: 'site',
+  base: '/leetcode-frontend',
+  publicPath: '/leetcode-frontend/',
   // mfsu: {},
   locales: [
     ['zh-CN', '中文'],
