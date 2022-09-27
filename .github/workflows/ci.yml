@@ -21,6 +21,10 @@ jobs:
           yarn
           yarn build
 
+      - name: List files
+        run: ls -la
+        working-directory: ${{ github.workspace }}/dist
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
